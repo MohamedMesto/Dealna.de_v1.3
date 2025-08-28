@@ -33,7 +33,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # DEBUG = os.environ.get('DEBUG')
  
 # DEBUG is True if DEVELOPMENT=1, False otherwise
-DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = os.environ.get('DEVELOPMENT', '0') in ['1', 'True', 'true']
+# DEBUG = 'DEVELOPMENT' in os.environ
 # DEBUG=True
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
