@@ -17,6 +17,9 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env # noqa: F401
 
+if os.path.isfile('env.py'):
+    import env # noqa: F401
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,19 +38,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # DEBUG = os.environ.get('DEVELOPMENT', '0') in ['1', 'True', 'true']
 DEBUG=True
 
-
-
-
 SECRET_KEY = os.environ.get('SECRET_KEY')
 if not SECRET_KEY:
     raise ValueError("The SECRET_KEY setting must not be empty!")
-
-
-
-
-
-
-
  
                     
 ALLOWED_HOSTS = ['127.0.0.1',  # Local preview,
@@ -175,11 +168,6 @@ else:
             'NAME': str(BASE_DIR) +'/db.sqlite3',
         }
     }
-
-
-
-
-
 
 
 
