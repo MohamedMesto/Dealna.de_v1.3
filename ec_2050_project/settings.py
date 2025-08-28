@@ -14,8 +14,6 @@ from pathlib import Path
 import os
 import dj_database_url
 
-if os.path.isfile('env.py'):
-    import env # noqa: F401
 
 if os.path.isfile('env.py'):
     import env # noqa: F401
@@ -35,8 +33,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # DEBUG = os.environ.get('DEBUG')
  
 # DEBUG is True if DEVELOPMENT=1, False otherwise
-# DEBUG = os.environ.get('DEVELOPMENT', '0') in ['1', 'True', 'true']
-DEBUG=True
+DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG=True
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 if not SECRET_KEY:
@@ -48,7 +46,9 @@ ALLOWED_HOSTS = ['127.0.0.1',  # Local preview,
                 'dealna-de-v1-3-3806d4fcd64f.herokuapp.com', # herokuapp App
                  ]
  
-
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+  ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 CSRF_TRUSTED_ORIGINS = [
     "https://dealna-de-v1-3-3806d4fcd64f.herokuapp.com/",
